@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@theme inline {
+  --font-sans: var(--font-ui), var(--font-bn), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-code), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-slate-950);
+  color: var(--color-slate-200);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-indigo-500) 40%, transparent);
+}
+
+/* The one signature motion: a pulse line that runs while the model works. */
+.pulse-run {
+  stroke-dasharray: 0.3 0.7;
+  animation: pulse-run 1.3s linear infinite;
+}
+
+@keyframes pulse-run {
+  from { stroke-dashoffset: 0.3; }
+  to   { stroke-dashoffset: -0.7; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-run { animation: none; stroke-dasharray: none; }
+}
